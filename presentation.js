@@ -1,43 +1,34 @@
-        (function() {
-            var tb = Tributary();
+(function() {
 
-            var config = new tb.Config();
+  function make_trib(options) {
 
-            var model = new tb.CodeModel();
+    d3.text(options.code, function(code) {
 
-            var context = new tb.TributaryContext({
-              config: config,
-              model: model,
-              el: d3.select("#display1").node()
-            });
-            context.render();
+      var tb = Tributary();
 
-            var editor = new tb.Editor({
-              model: model,
-              el: d3.select("#editor1").node()
-            });
-            editor.render();
+      var config = new tb.Config();
 
+      var model = new tb.CodeModel({code: code});
 
-            var tb2 = Tributary();
+      var context = new tb.TributaryContext({
+        config: config,
+        model: model,
+        el: d3.select(options.display).node()
+      });
+      context.render();
+      context.execute();
 
-            var config2 = new tb2.Config();
+      var editor = new tb.Editor({
+        model: model,
+        el: d3.select(options.editor).node()
+      });
+      editor.render();
+    });
+  }
 
-            var model2 = new tb2.CodeModel();
-
-            var context2 = new tb2.TributaryContext({
-              config: config2,
-              model: model2,
-              el: d3.select("#display2").node()
-            });
-            context2.render();
-
-            var editor2 = new tb2.Editor({
-              model: model2,
-              el: d3.select("#editor2").node()
-            });
-            editor2.render();
+  make_trib({code: "code/intro.js", display: "#display1", editor: "#editor1"});
 
 
-        }());
+
+}());
 

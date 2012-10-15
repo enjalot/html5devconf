@@ -1,7 +1,10 @@
         /* presentation styling */
         .trib_display {
+            width:49%;
             float:left;
+            /*
             width: 400px;
+            */
             height: 400px;
             border: 1px solid black !important;
         }
@@ -11,8 +14,12 @@
 
         }
         .editor {
+            float:right;
+            /*
             float: right;
             width: 400px;
+            */
+            width:49%;
             height: 400px;
         }
         .CodeMirror {
