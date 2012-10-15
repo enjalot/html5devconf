@@ -2,93 +2,51 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <link rel="stylesheet" href="/static/lib/reveal/css/enjreveal.css">
 
+    <!-- removed a couple lines that interfere with codemirror -->
+    <link rel="stylesheet" href="/static/lib/reveal/css/enjreveal.css">
+    <link rel="stylesheet" href="/static/lib/reveal/css/theme/simple.css">
+
+    <!-- tributary css -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/lib/CodeMirror2/lib/codemirror.css">
     <link rel="stylesheet" href="/static/lib/CodeMirror2/theme/night.css">
     <link rel="stylesheet" href="/static/lib/CodeMirror2/theme/lesser-dark.css">
-
     <link rel='stylesheet' type='text/css' href='http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css' />
     <link rel='stylesheet' type='text/css' href='/static/lib/slider/css/humanity/jquery-ui-slider.css' />
     <link href="/static/lib/colorpicker/Color.Picker.Classic.css" rel="stylesheet" type="text/css" />
 
-
-    <link rel="stylesheet" href="/static/lib/reveal/css/theme/simple.css">
-    <!--
-    <link rel="stylesheet" href="/static/lib/reveal/css/zenburn.css">
-    -->
-
-    <link rel="shortcut icon" href="/static/img/favicon.ico">
-
-    <style>
-        #display1 {
-        /*
-            position:absolute;
-            top: 20px;
-            left: 20px;
-            */
-            width: 500px;
-            height: 500px;
-            border: 1px solid black;
-        }
-        #editor1 {
-            /*
-            position: absolute;
-            right: 0px;
-            */
-            float: right;
-            width: 400px;
-            height: 400px;
-        }
-        #display2 {
-            /*
-            position:absolute;
-            top: 550px;
-            left: 20px;
-            */
-            width: 500px;
-            height: 500px;
-            border: 1px solid black;
-        }
-        #editor2 {
-            /*
-            position: absolute;
-            right: 0px;
-            top: 500px;
-            */
-            float: right;
-            width: 400px;
-            height: 400px;
-        }
-        */
-
-    </style>
+    <link rel='stylesheet' type='text/css' href='style.css' />
     
     </head>
-<body>
 
-<div id='page'>
-</div>
+<body>
 
 <div class="reveal">
     <div class="slides"> 
-        <section>Single Horizontal Slide</section>
         <section>
-        <section>Vertical Slide 1
-    <div id="display1"></div>
-    <div id="editor1"></div>
+     <div id="display1" class="trib_display"></div>
+     <div id="editor1" class="editor"></div>
+
+    <span class="desc">Talkin some shit</span>
+       
         </section>
-            <section>Vertical Slide 2</section>
 
+        <section>
+            <section>
+            slide 1
+            </section>
 
+            <section>
+            slide 2
+            </section>
         </section>
 
             <section>
     <!-- main tributary UI skeleton -->
-    <div id="display2"></div>
+    <div id="display2" class="trib_display"></div>
 
-    <div id="editor2"></div>
+    <div id="editor2" class="editor"></div>
 
     <div id="slider"></div>
             </section>
@@ -98,6 +56,7 @@
 </div>
     
     
+    <!-- Tributary Dependencies -->
     <!-- Essential 3rd party libraries -->
     <script src="/static/lib/d3.v2.min.js"></script>
     <script src="/static/lib/jquery-1.7.min.js"></script>
@@ -124,80 +83,32 @@
     <script src='/static/lib/tributary.js?v=0.55'></script>
 
 
-    <script type="text/javascript">
-        (function() {
-            var tb = Tributary();
-
-            var config = new tb.Config();
-
-            var model = new tb.CodeModel();
-
-            var context = new tb.TributaryContext({
-              config: config,
-              model: model,
-              el: d3.select("#display1").node()
-            });
-            context.render();
-
-            var editor = new tb.Editor({
-              model: model,
-              el: d3.select("#editor1").node()
-            });
-            editor.render();
-
-
-            var tb2 = Tributary();
-
-            var config2 = new tb2.Config();
-
-            var model2 = new tb2.CodeModel();
-
-            var context2 = new tb2.TributaryContext({
-              config: config2,
-              model: model2,
-              el: d3.select("#display2").node()
-            });
-            context2.render();
-
-            var editor2 = new tb2.Editor({
-              model: model2,
-              el: d3.select("#editor2").node()
-            });
-            editor2.render();
-
-
-        }());
+    <!-- custom tributary code for the presentation -->
+    <script type="text/javascript" src="presentation.js">
     </script>
     
-    <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
-	<div class=progress><span></span></div>
-
-    <aside class="controls">
-        <a class="left" href="#">◄</a>
-        <a class="right" href="#">►</a>
-        <a class="up" href="#">▲</a>
-        <a class="down" href="#">▼</a>
-    <script>
-        if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) )
-        document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
-    </script>
-    </aside>
-
+    <!-- Reveal stuff -->
     <script src="/static/lib/reveal/js/head.min.js"></script>
     <script src="/static/lib/reveal.min.js"></script>
 
     <script>
+            // Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
 			Reveal.initialize({
 				// Display controls in the bottom right corner
 				controls: true,
+                progress: true,
+				history: true,
 
 				// Styling themes, only affects transitions for now
-				theme: 'default' // default/concave/linear
+				theme: 'default', // default/concave/linear
+                transition: query.transition || 'linear', // default/cube/page/concave/linear(2d)
 			});
-
-			//hljs.initHighlightingOnLoad();
     </script>
-
 
 
 </body>
