@@ -1,5 +1,11 @@
         /* presentation styling */
-        .trib_display {
+        svg {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .vtrib_display {
             width:49%;
             float:left;
             /*
@@ -8,12 +14,7 @@
             height: 400px;
             border: 1px solid black !important;
         }
-        svg {
-            width: 100%;
-            height: 100%;
-
-        }
-        .editor {
+        .veditor {
             float:right;
             /*
             float: right;
@@ -22,6 +23,26 @@
             width:49%;
             height: 400px;
         }
+
+        .htrib_display {
+            width:100%;
+            float:left;
+            /*
+            width: 400px;
+            */
+            height: 400px;
+            border: 1px solid black !important;
+        }
+        .heditor {
+            float:left;
+            /*
+            float: right;
+            width: 400px;
+            */
+            width:100%;
+            height: 200px;
+        }
+ 
         .CodeMirror {
             width: 100%;
             height: 100%;
@@ -32,6 +53,9 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
         }
+        
+
+
 
         .desc {
             float:left;

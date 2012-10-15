@@ -5,7 +5,7 @@
 
     <!-- removed a couple lines that interfere with codemirror -->
     <link rel="stylesheet" href="/static/lib/reveal/css/enjreveal.css">
-    <link rel="stylesheet" href="/static/lib/reveal/css/theme/simple.css">
+    <link rel="stylesheet" href="/static/lib/reveal/css/theme/serif.css">
 
     <!-- tributary css -->
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
@@ -25,33 +25,30 @@
 <div class="reveal">
     <div class="slides"> 
         <section>
-     <div id="display1" class="trib_display"></div>
-     <div id="editor1" class="editor"></div>
-
-       
+             <div id="display1" class="vtrib_display"></div>
+             <div id="editor1" class="veditor"></div>
         </section>
 
         <section>
-            <section>
-            slide 1
-    <span class="desc">Talkin some shit</span>
-            </section>
+            <div id="display2" class="vtrib_display"></div>
+            <div id="editor2" class="veditor"></div>
 
-            <section>
-            slide 2
-    <span class="desc">Talkin some shit</span>
-            </section>
+            <br>
+            <span class="desc"><a href="http://enjalot.com/tributary/3891115/">Full Example</a></span>
         </section>
 
-            <section>
-    <!-- main tributary UI skeleton -->
-    <div id="display2" class="trib_display"></div>
+        <section>
+            <div id="display3" class="htrib_display"></div>
+            <div id="editor3" class="heditor"></div>
 
-    <div id="editor2" class="editor"></div>
-    <span class="desc">Talkin some shit</span>
+            <br>
+            <span class="desc"><a href="http://enjalot.com/tributary/3891155/">Full Example</a></span>
+        </section>
 
-            </section>
 
+
+    <!--
+    -->
 
     </div>
 </div>
@@ -64,6 +61,7 @@
     <script src="/static/lib/jquery-1.7.min.js"></script>
     <script src="/static/lib/underscore-min.js"></script>
     <script src="/static/lib/backbone-min.js"></script>
+    <script src="/static/lib/require.js"></script>
  
     <!-- CodeMirror -->
     <script src="/static/lib/CodeMirror2/lib/codemirror.js"></script>
@@ -105,6 +103,7 @@
 				controls: true,
                 progress: true,
 				history: true,
+                mouseWheel: false,
 
 				// Styling themes, only affects transitions for now
 				theme: 'default', // default/concave/linear
