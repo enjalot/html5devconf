@@ -7,6 +7,11 @@
             width: 100%;
             height: 100%;
         }
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        
 
         .vtrib_display {
             width:49%;
@@ -68,3 +73,5 @@
         .ui-widget {
             font-size: 12px !important;
         }
+
+

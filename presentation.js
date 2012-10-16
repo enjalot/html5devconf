@@ -5,19 +5,20 @@
   make_trib({code: "code/intro.js", display: "#display1", editor: "#editor1"});
 
   //nils text
-  make_trib_gist({gistid: "3891155", display: "#display2", editor: "#editor2"});
+  //make_trib_gist({gistid: "3891155", display: "#display2", editor: "#editor2"});
   //ej responsive
-  make_trib_gist({gistid: "3897791", display: "#display3", editor: "#editor3"});
+  //make_trib_gist({gistid: "3897791", display: "#display3", editor: "#editor3"});
   //gradient controls
-  make_trib_gist({gistid: "3897603", display: "#display4", editor: "#editor4"});
+  //make_trib_gist({gistid: "3897603", display: "#display4", editor: "#editor4"});
 
   //calendar
-  make_trib_gist({gistid: "3791303", display: "#display5", editor: "#editor5"});
+  //make_trib_gist({gistid: "3791303", display: "#display5", editor: "#editor5"});
   //cost of living (michi help)
-  make_trib_gist({gistid: "3898087", display: "#display6", editor: "#editor6"});
+  //make_trib_gist({gistid: "3898087", display: "#display6", editor: "#editor6"});
   //meetup help (ej + erik help)
-  make_trib_gist({gistid: "3891115", display: "#display7", editor: "#editor7"});
+  //make_trib_gist({gistid: "3891115", display: "#display7", editor: "#editor7"});
 
+  /*
   //logistic map by moebio
   make_trib_gist({gistid: "3898111", display: "#display8", editor: "#editor8", render: "canvas"});
   //shallow water by jeff
@@ -26,6 +27,7 @@
   make_trib_gist({gistid: "3898058", display: "#display10", editor: "#editor10"});
   //boids + voronoi (mike + jasondavies)
   make_trib_gist({gistid: "3127156", display: "#display11", editor: "#editor11"});
+  */
 
 
 
