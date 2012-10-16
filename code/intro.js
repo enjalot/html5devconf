@@ -1,5 +1,5 @@
 g.append("text")
-  .text("Hello")
+  .text("")
   .attr({
     x: 100,
     y: 100,
@@ -8,7 +8,7 @@ g.append("text")
   });
 
 g.append("text")
-  .text("good news everyone")
+  .text("")
   .attr({
     x: 100,
     y: 191,
