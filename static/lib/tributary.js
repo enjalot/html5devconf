@@ -116,6 +116,7 @@ var Tributary = function() {
         d3.select(this.parentNode).selectAll("div.config").classed("config_active", false);
         d3.select(this).classed("config_active", true);
         that.model.set("display", d.name);
+        tributary.events.trigger("execute");
       });
       d3.select(this.el).append("span").classed("config_title", true).text("Time Controls:");
       var tcs = d3.select(this.el).append("div").classed("timecontrols", true).selectAll("div.config").data(tributary.time_controls).enter().append("div").classed("config", true);
@@ -499,7 +500,8 @@ var Tributary = function() {
   tributary.gist = function(id, callback) {
     tributary.gistid = id;
     var ret = {};
-    var cachebust = "?cachebust=" + Math.random() * 0xf12765df4c9b2;
+    //var cachebust = "?cachebust=" + Math.random() * 0xf12765df4c9b2;
+    var cachebust = "";
     d3.json("https://api.github.com/gists/" + id + cachebust, function(data) {
       ret.gist = data;
       if (data.user === null || data.user === undefined) {
@@ -988,6 +990,30 @@ var Tributary = function() {
       panel_gui.select("#" + name + "_tab").classed("gui_active", true);
     });
     tributary.events.trigger("show", "edit");
+    $("#hide-panel-button").on("click", function() {
+      tributary.events.trigger("hidepanel");
+      $("#display").addClass("fullscreen");
+      $("svg").addClass("fullscreen");
+      $("#header").addClass("dimheader");
+    });
+    $("#show-codepanel-button").on("click", function() {
+      tributary.events.trigger("showpanel");
+      $("#display").removeClass("fullscreen");
+      $("svg").removeClass("fullscreen");
+      $("#header").removeClass("dimheader");
+    });
+    tributary.events.on("hidepanel", function() {
+      $("#panel").hide();
+      $("#panel_gui").hide();
+      $("#panel_handle").hide();
+      $("#show-codepanel").show();
+    });
+    tributary.events.on("showpanel", function() {
+      $("#panel").show();
+      $("#panel_gui").show();
+      $("#panel_handle").show();
+      $("#show-codepanel").hide();
+    });
   };
   tributary.ui.assemble = function(gistid) {
     tributary.trace = true;
